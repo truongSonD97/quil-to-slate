@@ -28,6 +28,8 @@ body {
       color:#06c ;
       text-decoration: underline;
     }
+    font-size: 13px;
+
 
     h1 {
       display: block;
@@ -75,6 +77,11 @@ body {
       margin-left: 0;
       margin-right: 0;
       font-weight: bold;
+    }
+   
+  
+    li::marker{
+      font-size: 13px;
     }
     
 }
