@@ -20,12 +20,11 @@ import {
 } from "slate-react";
 import { Button, Toolbar } from "@/components/components";
 import { Icon } from "@/components/Icon";
-
+import { useRouter } from "next/navigation";
 
 interface CustomElement extends SlateElement {
   type: string;
 }
-
 
 const Leaf = ({ attributes, children, leaf }: any) => {
   if (leaf.bold) {
@@ -134,7 +133,7 @@ const TEXT_ALIGN_TYPES: any[] = ["left", "center", "right", "justify"];
 const SlateEditor = () => {
   const localQuillData = getEditorData();
   const JSONInitValue = parseFromHTML(localQuillData);
-
+  const router = useRouter()
   const renderElement = useCallback((props: any) => <Element {...props} />, []);
   const renderLeaf = useCallback((props: any) => <Leaf {...props} />, []);
   const editor = useMemo(
@@ -142,8 +141,17 @@ const SlateEditor = () => {
     []
   );
 
+
+
   return (
     <div className="px-[20px] py-[20px]">
+      <div
+        className="mb-[20px] py-[5px] w-fit cursor-pointer flex items-center"
+        onClick={() => {router.replace("/")}}
+      >
+        <Icon propsIcon={{ size: 28 }} nameIcon="MdOutlineArrowBackIos" />
+        <span className="ml-[5px] font-[600]">Go Home</span>
+      </div>
       <div className="border rounded mb-[40px]">
         <p>JSON Data:</p>
         <p>{JSON.stringify(JSONInitValue)}</p>
@@ -170,7 +178,6 @@ const SlateEditor = () => {
             renderLeaf={renderLeaf}
             placeholder="Paste in some HTML..."
             className=" font-sans border-0 outline-0"
-            
           />
         </Slate>
       </div>
@@ -184,9 +191,6 @@ function getEditorData() {
   return quillData;
 }
 
-
-
-
 const toggleBlock = (editor: any, format: any) => {
   const isActive = isBlockActive(
     editor,
@@ -196,7 +200,7 @@ const toggleBlock = (editor: any, format: any) => {
   const isList = LIST_TYPES.includes(format);
 
   Transforms.unwrapNodes(editor, {
-    match: (n: {type:string} | any) =>
+    match: (n: { type: string } | any) =>
       !Editor.isEditor(n) &&
       SlateElement.isElement(n) &&
       LIST_TYPES.includes((n as CustomElement).type) &&
