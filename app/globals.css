@@ -24,6 +24,81 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    a {
+      color:#06c ;
+      text-decoration: underline;
+    }
+
+    h1 {
+      display: block;
+      font-size: 2em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+    }
+
+    h2 {
+      display: block;
+      font-size: 1.5em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+    }
+
+    h3 {
+      display: block;
+      font-size: 1.17em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+    }
+
+    h4 {
+      display: block;
+      font-size: 1em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+    }
+
+    h5 {
+      display: block;
+      font-size: .83em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+    }
+
+    h6 {
+      display: block;
+      font-size: .67em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+    }
+    
+}
+
+
+.controls {
+  display: flex;
+  border: 1px solid #ccc;
+  border-top: 0;
+  padding: 10px;
+}
+
+.controls-right {
+  margin-left: auto;
+}
+
+.state {
+  margin: 10px 0;
+  font-family: monospace;
+}
+
+.state-title {
+  color: #999;
+  text-transform: uppercase;
 }
 
 @layer utilities {
